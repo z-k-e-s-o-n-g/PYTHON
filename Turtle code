@@ -1,0 +1,47 @@
+import turtle
+import random
+turtle.Screen().bgcolor("black")
+turtle.hideturtle()
+turtle.speed(0)
+turtle.colormode(255)
+distance=200
+def rgb(a,b,c): turtle.color(a,b,c)
+def rbg(a,b,c): turtle.color(a,c,b)
+def grb(a,b,c): turtle.color(b,a,c)
+def brg(a,b,c): turtle.color(b,c,a)
+def gbr(a,b,c): turtle.color(c,a,b)
+def bgr(a,b,c): turtle.color(c,b,a)
+colors=[rgb,rbg,grb,brg,gbr,bgr]
+while True:
+    a = 0
+    i = random.uniform(0.2,1)
+    t = random.randint(20, 339)
+    z=random.randint(16,64)
+    e=random.randint(0,5)
+    while turtle.distance(0,0)<distance:
+        if random.randint(1,2)==1:
+            for b in range(0,256,z):
+                for c in range(0,256,z):
+                    for d in range(0,256,z):
+                        colors[e](b,c,d)
+                        turtle.fd(a)
+                        turtle.rt(t)
+                        a += i
+                        if turtle.distance(0,0)>distance:
+                            break             
+        else:
+            for b in range(255,-1,-z):
+                for c in range(255,-1,-z):
+                    for d in range(255,-1,-z):
+                        colors[e](b,c,d)
+                        turtle.fd(a)
+                        turtle.rt(t)
+                        a += i
+                        if turtle.distance(0,0)>distance:
+                            break
+    turtle.color(0,0,0)
+    while a>0:
+        a -= i
+        turtle.lt(t)
+        turtle.bk(a)
+    turtle.clear()
